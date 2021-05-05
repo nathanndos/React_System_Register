@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState} from 'react'
 import { Constainer, Disciplinas } from './styles'
+
 
 const Details: React.FC = () => {
 
