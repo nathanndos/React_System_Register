@@ -1,4 +1,4 @@
-import React, { useState} from 'react'
+import React, { useEffect, useState} from 'react'
 import { Form } from './styles'
 
 interface Cadastro {
@@ -10,12 +10,30 @@ interface Cadastro {
 }
 
 const New: React.FC = () => {
-  const [professores, setProfessores] = useState([])
+  const [professores, setProfessores] = useState<Cadastro[]>(() => {
+    const storagedProfessores = localStorage.getItem(
+      '@professores:cadastro'
+    )
+    if(storagedProfessores){
+      return JSON.parse(storagedProfessores)
+    }
+      return []
+  })
+  //define que o estado é um array de objeto. O objeto é defino criando uma interface
+
+  useEffect(() =>{
+    localStorage.setItem(//gravar no banco de dados
+      '@professores:cadastro',
+      JSON.stringify(professores)//converto o objeto em string
+    )
+  },[professores]);
+  //primeiro parametro executa na priumeira vez
+  //segundo OU toda vez que o estado professores mudar
 
   function handleAddProfessores(event: any){
     event.preventDefault()// quando os dados forem preenchidos e enviados, a pagina nao sera recarregada
 
-    const { target:form} = event
+    const { target: form} = event
 
     const novoCadastro = {
       disciplina: form.disciplina.value,
@@ -26,6 +44,10 @@ const New: React.FC = () => {
      }
      console.log(novoCadastro);
 
+     setProfessores([...professores,novoCadastro])
+     //imutabilidade
+     //...spread operator
+     form.reset()
   }
 
 return (

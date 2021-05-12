@@ -19,3 +19,4 @@ export const Disciplinas = styled.div`
   }
 
 `
+
