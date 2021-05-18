@@ -10,7 +10,7 @@ interface Cadastro {
 }
 
 const New: React.FC = () => {
-  const [professores, setProfessores] = useState<Cadastro[]>(() => {
+  const [professores, setProfessores] = useState<Cadastro[]>(() => { //useState<Tipo>('valor inicial')
     const storagedProfessores = localStorage.getItem(
       '@professores:cadastro'
     )
@@ -30,7 +30,7 @@ const New: React.FC = () => {
   //primeiro parametro executa na priumeira vez
   //segundo OU toda vez que o estado professores mudar
 
-  function handleAddProfessores(event: any){
+  function handleAddProfessores(event: any){ //Pegando o evento de formulario passado na hora da chamada
     event.preventDefault()// quando os dados forem preenchidos e enviados, a pagina nao sera recarregada
 
     const { target: form} = event
