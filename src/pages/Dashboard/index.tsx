@@ -29,10 +29,11 @@ const Dashboard: React.FC = () => {
   return(
     <Container>
       <ul>
-        <li><Link to="/details">Joao</Link></li>
-        <li><Link to="/details">Maria</Link></li>
-        <li><Link to="/details">Pedro</Link></li>
-        <li><Link to="/details">Carlos</Link></li>
+        {professorUnico.map((professor, indice)=>
+          <li key={indice}>
+          <Link to={`/details/${professor}`}>{professor}</Link>
+        </li>
+        )}
       </ul>
     </Container>
   )

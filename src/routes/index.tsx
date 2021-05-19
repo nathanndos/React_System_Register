@@ -12,7 +12,7 @@ const Routes: React.FC = () =>(
   <Switch>
     <Route path="/" exact component={Dashboard}/>
     <Route path="/new" component = {New}/>
-    <Route path = "/details" component ={Details}/>
+    <Route path = "/details/:professor" component ={Details}/>
   </Switch>
 )
 //exact component garante que na url seja exatamante a barra
